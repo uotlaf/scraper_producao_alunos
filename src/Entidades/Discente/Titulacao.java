@@ -98,4 +98,19 @@ public class Titulacao {
     public void setOutros(String outros) {
         this.outros = outros;
     }
+
+    @Override
+    public String toString() {
+        return "Titulacao{" +
+                "anoInicial=" + anoInicial +
+                ", anoFinal=" + anoFinal +
+                ", nivel='" + nivel + '\'' +
+                ", local='" + local + '\'' +
+                ", titulo='" + titulo + '\'' +
+                ", anoDObtencao=" + anoDObtencao +
+                ", orientador='" + orientador + '\'' +
+                ", coorientador='" + coorientador + '\'' +
+                ", outros='" + outros + '\'' +
+                '}';
+    }
 }

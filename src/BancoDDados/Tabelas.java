@@ -6,7 +6,7 @@ public class Tabelas extends Conexao{
 
     private final String tabelaDiscentes =
             "CREATE TABLE IF NOT EXISTS DISCENTES (" +
-                    "IDLATTES INTEGER NOT NULL," +
+                    "IDLATTES BIGINT NOT NULL," +
                     "NOME VARCHAR(100) NOT NULL," +
                     "CITACAO VARCHAR(100) NOT NULL," +
                     "ATUACAO_PROF VARCHAR(1000)," +

@@ -4,13 +4,16 @@ import BancoDDados.ProducaoDAO;
 import BancoDDados.Tabelas;
 import Entidades.Discente.*;
 import Entidades.Discente.Discente;
+import Scrapper.LattesPag;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class LAB3 {
     public static void main(String[] args) throws SQLException {
 
+        /*
         // Informações que vão ser usadas
         String path = "banco";
         String nomedb = "banco.db";
@@ -57,6 +60,16 @@ public class LAB3 {
 
         for (Discente d : todosOsDisc ) {
             System.out.println(d.getNome());
+        }
+
+         */
+
+        LattesPag scrapper = new LattesPag();
+
+        try {
+            scrapper.ScrapPessoa("./paginas/Currículo do Sistema de Currículos Lattes (Luis Jorge Enrique Rivero Cabrejos).html");
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 

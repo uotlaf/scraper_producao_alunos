@@ -138,12 +138,12 @@ public class DiscenteDAO extends Conexao implements DAO{
      * @return O primeiro(e único) discente encontrado. Se não encontrar, retorna null
      * @throws SQLException Quando existe algum erro na pesquisa
      */
-    public Discente buscarPorIDLattes(int idlattes) throws SQLException{
+    public Discente buscarPorIDLattes(long idlattes) throws SQLException{
         String comando = "SELECT * FROM DISCENTES WHERE IDLATTES = ?";
 
         conectar();
         PreparedStatement pstm = conexao.prepareStatement(comando);
-        pstm.setInt(1, idlattes);
+        pstm.setLong(1, idlattes);
 
         ResultSet lista = pstm.executeQuery();
 

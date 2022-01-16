@@ -15,6 +15,7 @@ Os discentes devem continuamente alimentar seu currículo Lattes com suas produ�
 
 - [ ] Interface gráfica
 - [X] Banco de dados
+- [ ] Scrap local
 - [ ] Scrap direto da web
 
 ### Dependências:
