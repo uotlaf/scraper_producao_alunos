@@ -17,5 +17,9 @@ Os discentes devem continuamente alimentar seu currículo Lattes com suas produ�
 - [X] Banco de dados
 - [ ] Scrap direto da web
 
+### Dependências:
+[Jsoup Java HTML Parser](https://mvnrepository.com/artifact/org.jsoup/jsoup), 
+[HyperSQL Database](https://mvnrepository.com/artifact/org.hsqldb/hsqldb)
+
 
 Alunos: [Uotlaf](https://github.com/uotlaf/) e [pedrochais](https://github.com/pedrochais)
