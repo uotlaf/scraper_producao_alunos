@@ -12,12 +12,14 @@ public class ProducaoTecnica extends Producao{
     private String titulo; // Nome do programa
     private String tipo;
     private ArrayList<String> autores = new ArrayList<>();
+    private String onde;
 
-    public ProducaoTecnica(int ano, String titulo, String tipo, ArrayList<String> autores) {
+    public ProducaoTecnica(int ano, String titulo, String tipo, ArrayList<String> autores, String onde) {
         super(ano);
         this.titulo = titulo;
         this.tipo = tipo;
         this.autores = autores;
+        this.onde = onde;
     }
 
     public String getTitulo() {

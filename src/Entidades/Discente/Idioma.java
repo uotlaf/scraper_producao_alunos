@@ -56,4 +56,15 @@ public class Idioma {
     public void setEscreve(String escreve) {
         Escreve = escreve;
     }
+
+    @Override
+    public String toString() {
+        return "Idioma{" +
+                "nome='" + nome + '\'' +
+                ", Compreende='" + Compreende + '\'' +
+                ", Fala='" + Fala + '\'' +
+                ", Le='" + Le + '\'' +
+                ", Escreve='" + Escreve + '\'' +
+                '}';
+    }
 }

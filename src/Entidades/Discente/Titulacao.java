@@ -1,8 +1,8 @@
 package Entidades.Discente;
 
 public class Titulacao {
-    private int anoInicial;
-    private int anoFinal;
+    private String anoInicial;
+    private String anoFinal;
     private String nivel;
     private String local;
     private String titulo;
@@ -11,7 +11,7 @@ public class Titulacao {
     private String coorientador;
     private String outros;
 
-    public Titulacao(int anoInicial, int anoFinal,
+    public Titulacao(String anoInicial, String anoFinal,
                      String nivel, String local,
                      String titulo, int anoDObtencao,
                      String orientador, String coorientador,
@@ -27,19 +27,19 @@ public class Titulacao {
         this.outros = outros;
     }
 
-    public int getAnoInicial() {
+    public String getAnoInicial() {
         return anoInicial;
     }
 
-    public void setAnoInicial(int anoInicial) {
+    public void setAnoInicial(String anoInicial) {
         this.anoInicial = anoInicial;
     }
 
-    public int getAnoFinal() {
+    public String getAnoFinal() {
         return anoFinal;
     }
 
-    public void setAnoFinal(int anoFinal) {
+    public void setAnoFinal(String anoFinal) {
         this.anoFinal = anoFinal;
     }
 
