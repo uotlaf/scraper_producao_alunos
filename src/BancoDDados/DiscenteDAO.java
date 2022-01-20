@@ -58,12 +58,14 @@ public class DiscenteDAO extends Conexao implements DAO{
         for (AtuacaoProf a : discente.getAtuacaoProf()) {
             // Use "," para separar objetos da titulacao.
             // Use ":" para separar titulacoes
-            atuacaoProf += a.getOnde()      + ","
-                    + a.getAnoInicial()     + ","
+            atuacaoProf += a.getAnoInicial()+ ","
                     + a.getAnoFinal()       + ","
                     + a.getVinculo()        + ","
                     + a.getEnquadramento()  + ","
-                    + a.getRegime()         + "\n"; // Adiciona o final e pula para outra titulacao
+                    + a.getRegime()         + ","
+                    + a.getLocal()          + ","
+                    + a.getTipoDVinculo()   + ","
+                    + a.getOutros()         + "\n"; // Adiciona o final e pula para outra titulacao
         }
 
         String formcomp = "";
@@ -71,10 +73,9 @@ public class DiscenteDAO extends Conexao implements DAO{
             // Use "," para separar campos
             // Use ":" para separar entidades
             formcomp += f.getAnoInicial()  + ","
-                    + f.getAnoFinal()       + ","
-                    + f.getNome()           + ","
-                    + f.getCargaHoraria()   + ","
-                    + f.getOnde()           + "\n"; // Adiciona o final e pula para outra entidade
+                    + f.getAnoFinal()      + ","
+                    + f.getTitulo()        + ","
+                    + f.getOnde()          + "\n"; // Adiciona o final e pula para outra entidade
         }
 
         String areaDAtuacao = "";
@@ -82,7 +83,7 @@ public class DiscenteDAO extends Conexao implements DAO{
             // Use "," para separar campos
             // Use ":" para separar entidades
             areaDAtuacao += a.getGrandeArea()  + ","
-                    + a.getArea()              + "\n"; // Adiciona o final e pula para outra entidade
+                         + a.getArea()         + "\n"; // Adiciona o final e pula para outra entidade
         }
 
         String idiomas = "";
@@ -150,16 +151,16 @@ public class DiscenteDAO extends Conexao implements DAO{
         Discente discente = new Discente();
 
         if (lista.next()) {
-            discente.setIdlattes(lista.getInt("IDLATTES"));
-            discente.setNome(lista.getString("NOME"));
-            discente.setCitacao(lista.getString("CITACAO"));
+            discente.setIdlattes(lista.getInt   ("IDLATTES"));
+            discente.setNome    (lista.getString("NOME"));
+            discente.setCitacao (lista.getString("CITACAO"));
 
 
             String[] titulacoes = lista.getString("TITULACAO").split("\n");
             for (String s : titulacoes) {
                 String[] titulacao = s.split(",");
-                discente.addTitulacao(new Titulacao(Integer.parseInt(titulacao[0]),
-                        Integer.parseInt(titulacao[1]), titulacao[2],
+                discente.addTitulacao(new Titulacao(titulacao[0],
+                        titulacao[1], titulacao[2],
                         titulacao[3], titulacao[4],
                         Integer.parseInt(titulacao[5]), titulacao[6],
                         titulacao[7], titulacao[8]));
@@ -168,9 +169,8 @@ public class DiscenteDAO extends Conexao implements DAO{
             String[] formacoes = lista.getString("FORMACAO_COMP").split("\n");
             for (String s : formacoes) {
                 String[] formacao = s.split(",");
-                discente.addFormacaoComp(new FormComp(Integer.parseInt(formacao[0]),
-                        Integer.parseInt(formacao[1]), formacao[2],
-                        Integer.parseInt(formacao[3]), formacao[4]));
+                discente.addFormacaoComp(new FormComp(formacao[0],
+                        formacao[1], formacao[2], formacao[4]));
             }
 
             String[] areasDAtuacao = lista.getString("AREA_D_ATUACAO").split("\n");
@@ -223,8 +223,8 @@ public class DiscenteDAO extends Conexao implements DAO{
             String[] titulacoes = lista.getString("TITULACAO").split("\n");
             for (String s : titulacoes) {
                 String[] titulacao = s.split(",");
-                discente.addTitulacao(new Titulacao(Integer.parseInt(titulacao[0]),
-                        Integer.parseInt(titulacao[1]), titulacao[2],
+                discente.addTitulacao(new Titulacao(titulacao[0],
+                        titulacao[1], titulacao[2],
                         titulacao[3], titulacao[4],
                         Integer.parseInt(titulacao[5]), titulacao[6],
                         titulacao[7], titulacao[8]));
@@ -233,9 +233,8 @@ public class DiscenteDAO extends Conexao implements DAO{
             String[] formacoes = lista.getString("FORMACAO_COMP").split("\n");
             for (String s : formacoes) {
                 String[] formacao = s.split(",");
-                discente.addFormacaoComp(new FormComp(Integer.parseInt(formacao[0]),
-                        Integer.parseInt(formacao[1]), formacao[2],
-                        Integer.parseInt(formacao[3]), formacao[4]));
+                discente.addFormacaoComp(new FormComp(formacao[0],
+                        formacao[1], formacao[2], formacao[4]));
             }
 
             String[] areasDAtuacao = lista.getString("AREA_D_ATUACAO").split("\n");
@@ -286,8 +285,8 @@ public class DiscenteDAO extends Conexao implements DAO{
             String[] titulacoes = lista.getString("TITULACAO").split("\n");
             for (String s : titulacoes) {
                 String[] titulacao = s.split(",");
-                discente.addTitulacao(new Titulacao(Integer.parseInt(titulacao[0]),
-                        Integer.parseInt(titulacao[1]), titulacao[2],
+                discente.addTitulacao(new Titulacao(titulacao[0],
+                        titulacao[1], titulacao[2],
                         titulacao[3], titulacao[4],
                         Integer.parseInt(titulacao[5]), titulacao[6],
                         titulacao[7], titulacao[8]));
@@ -296,9 +295,8 @@ public class DiscenteDAO extends Conexao implements DAO{
             String[] formacoes = lista.getString("FORMACAO_COMP").split("\n");
             for (String s : formacoes) {
                 String[] formacao = s.split(",");
-                discente.addFormacaoComp(new FormComp(Integer.parseInt(formacao[0]),
-                        Integer.parseInt(formacao[1]), formacao[2],
-                        Integer.parseInt(formacao[3]), formacao[4]));
+                discente.addFormacaoComp(new FormComp(formacao[0],
+                        formacao[1], formacao[2], formacao[4]));
             }
 
             String[] areasDAtuacao = lista.getString("AREA_D_ATUACAO").split("\n");
@@ -349,8 +347,8 @@ public class DiscenteDAO extends Conexao implements DAO{
             String[] titulacoes = lista.getString("TITULACAO").split("\n");
             for (String s : titulacoes) {
                 String[] titulacao = s.split(",");
-                discente.addTitulacao(new Titulacao(Integer.parseInt(titulacao[0]),
-                        Integer.parseInt(titulacao[1]), titulacao[2],
+                discente.addTitulacao(new Titulacao(titulacao[0],
+                        titulacao[1], titulacao[2],
                         titulacao[3], titulacao[4],
                         Integer.parseInt(titulacao[5]), titulacao[6],
                         titulacao[7], titulacao[8]));
@@ -359,9 +357,8 @@ public class DiscenteDAO extends Conexao implements DAO{
             String[] formacoes = lista.getString("FORMACAO_COMP").split("\n");
             for (String s : formacoes) {
                 String[] formacao = s.split(",");
-                discente.addFormacaoComp(new FormComp(Integer.parseInt(formacao[0]),
-                        Integer.parseInt(formacao[1]), formacao[2],
-                        Integer.parseInt(formacao[3]), formacao[4]));
+                discente.addFormacaoComp(new FormComp(formacao[0],
+                        formacao[1], formacao[2], formacao[4]));
             }
 
             String[] areasDAtuacao = lista.getString("AREA_D_ATUACAO").split("\n");
@@ -413,8 +410,8 @@ public class DiscenteDAO extends Conexao implements DAO{
             String[] titulacoes = lista.getString("TITULACAO").split("\n");
             for (String s : titulacoes) {
                 String[] titulacao = s.split(",");
-                discente.addTitulacao(new Titulacao(Integer.parseInt(titulacao[0]),
-                        Integer.parseInt(titulacao[1]), titulacao[2],
+                discente.addTitulacao(new Titulacao(titulacao[0],
+                        titulacao[1], titulacao[2],
                         titulacao[3], titulacao[4],
                         Integer.parseInt(titulacao[5]), titulacao[6],
                         titulacao[7], titulacao[8]));
@@ -423,9 +420,8 @@ public class DiscenteDAO extends Conexao implements DAO{
             String[] formacoes = lista.getString("FORMACAO_COMP").split("\n");
             for (String s : formacoes) {
                 String[] formacao = s.split(",");
-                discente.addFormacaoComp(new FormComp(Integer.parseInt(formacao[0]),
-                        Integer.parseInt(formacao[1]), formacao[2],
-                        Integer.parseInt(formacao[3]), formacao[4]));
+                discente.addFormacaoComp(new FormComp(formacao[0],
+                        formacao[1], formacao[2], formacao[4]));
             }
 
             String[] areasDAtuacao = lista.getString("AREA_D_ATUACAO").split("\n");
@@ -477,8 +473,8 @@ public class DiscenteDAO extends Conexao implements DAO{
             String[] titulacoes = lista.getString("TITULACAO").split("\n");
             for (String s : titulacoes) {
                 String[] titulacao = s.split(",");
-                discente.addTitulacao(new Titulacao(Integer.parseInt(titulacao[0]),
-                        Integer.parseInt(titulacao[1]), titulacao[2],
+                discente.addTitulacao(new Titulacao(titulacao[0],
+                        titulacao[1], titulacao[2],
                         titulacao[3], titulacao[4],
                         Integer.parseInt(titulacao[5]), titulacao[6],
                         titulacao[7], titulacao[8]));
@@ -487,9 +483,8 @@ public class DiscenteDAO extends Conexao implements DAO{
             String[] formacoes = lista.getString("FORMACAO_COMP").split("\n");
             for (String s : formacoes) {
                 String[] formacao = s.split(",");
-                discente.addFormacaoComp(new FormComp(Integer.parseInt(formacao[0]),
-                        Integer.parseInt(formacao[1]), formacao[2],
-                        Integer.parseInt(formacao[3]), formacao[4]));
+                discente.addFormacaoComp(new FormComp(formacao[0],
+                        formacao[1], formacao[2], formacao[4]));
             }
 
             String[] areasDAtuacao = lista.getString("AREA_D_ATUACAO").split("\n");
@@ -541,8 +536,8 @@ public class DiscenteDAO extends Conexao implements DAO{
             String[] titulacoes = lista.getString("TITULACAO").split("\n");
             for (String s : titulacoes) {
                 String[] titulacao = s.split(",");
-                discente.addTitulacao(new Titulacao(Integer.parseInt(titulacao[0]),
-                        Integer.parseInt(titulacao[1]), titulacao[2],
+                discente.addTitulacao(new Titulacao(titulacao[0],
+                        titulacao[1], titulacao[2],
                         titulacao[3], titulacao[4],
                         Integer.parseInt(titulacao[5]), titulacao[6],
                         titulacao[7], titulacao[8]));
@@ -551,9 +546,8 @@ public class DiscenteDAO extends Conexao implements DAO{
             String[] formacoes = lista.getString("FORMACAO_COMP").split("\n");
             for (String s : formacoes) {
                 String[] formacao = s.split(",");
-                discente.addFormacaoComp(new FormComp(Integer.parseInt(formacao[0]),
-                        Integer.parseInt(formacao[1]), formacao[2],
-                        Integer.parseInt(formacao[3]), formacao[4]));
+                discente.addFormacaoComp(new FormComp(formacao[0],
+                        formacao[1], formacao[2], formacao[4]));
             }
 
             String[] areasDAtuacao = lista.getString("AREA_D_ATUACAO").split("\n");
@@ -605,8 +599,8 @@ public class DiscenteDAO extends Conexao implements DAO{
             String[] titulacoes = lista.getString("TITULACAO").split("\n");
             for (String s : titulacoes) {
                 String[] titulacao = s.split(",");
-                discente.addTitulacao(new Titulacao(Integer.parseInt(titulacao[0]),
-                        Integer.parseInt(titulacao[1]), titulacao[2],
+                discente.addTitulacao(new Titulacao(titulacao[0],
+                        titulacao[1], titulacao[2],
                         titulacao[3], titulacao[4],
                         Integer.parseInt(titulacao[5]), titulacao[6],
                         titulacao[7], titulacao[8]));
@@ -615,9 +609,8 @@ public class DiscenteDAO extends Conexao implements DAO{
             String[] formacoes = lista.getString("FORMACAO_COMP").split("\n");
             for (String s : formacoes) {
                 String[] formacao = s.split(",");
-                discente.addFormacaoComp(new FormComp(Integer.parseInt(formacao[0]),
-                        Integer.parseInt(formacao[1]), formacao[2],
-                        Integer.parseInt(formacao[3]), formacao[4]));
+                discente.addFormacaoComp(new FormComp(formacao[0],
+                        formacao[1], formacao[2], formacao[4]));
             }
 
             String[] areasDAtuacao = lista.getString("AREA_D_ATUACAO").split("\n");
@@ -673,8 +666,8 @@ public class DiscenteDAO extends Conexao implements DAO{
             String[] titulacoes = lista.getString("TITULACAO").split("\n");
             for (String s : titulacoes) {
                 String[] titulacao = s.split(",");
-                discente.addTitulacao(new Titulacao(Integer.parseInt(titulacao[0]),
-                        Integer.parseInt(titulacao[1]), titulacao[2],
+                discente.addTitulacao(new Titulacao(titulacao[0],
+                        titulacao[1], titulacao[2],
                         titulacao[3], titulacao[4],
                         Integer.parseInt(titulacao[5]), titulacao[6],
                         titulacao[7], titulacao[8]));
@@ -683,9 +676,8 @@ public class DiscenteDAO extends Conexao implements DAO{
             String[] formacoes = lista.getString("FORMACAO_COMP").split("\n");
             for (String s : formacoes) {
                 String[] formacao = s.split(",");
-                discente.addFormacaoComp(new FormComp(Integer.parseInt(formacao[0]),
-                        Integer.parseInt(formacao[1]), formacao[2],
-                        Integer.parseInt(formacao[3]), formacao[4]));
+                discente.addFormacaoComp(new FormComp(formacao[0],
+                        formacao[1], formacao[2], formacao[4]));
             }
 
             String[] areasDAtuacao = lista.getString("AREA_D_ATUACAO").split("\n");

@@ -137,7 +137,7 @@ public class ProducaoDAO extends Conexao implements DAO{
 
         while (lista.next()) {
             if (lista.getString("TIPO").equals("Evento")) {
-                Eventos prod = new Eventos(lista.getInt("ANO"), lista.getString("LOCAL"));
+                Eventos prod = new Eventos(lista.getInt("ANO"), lista.getString("LOCAL"), lista.getString("TIPODPROD"), lista.getString("NOME"));
                 encontrados.add(prod);
             } else if (lista.getString("TIPO").equals("Producao Tecnica")) {
                 String autores_str = lista.getString("AUTORES");
@@ -150,7 +150,7 @@ public class ProducaoDAO extends Conexao implements DAO{
                 ProducaoTecnica prod = new ProducaoTecnica(lista.getInt("ANO"),
                         lista.getString("TITULO"),
                         lista.getString("TIPODPROD"),
-                        autores);
+                        autores, lista.getString("TITULO"));
                 encontrados.add(prod);
             } else if (lista.getString("TIPO").equals("Resumo Expandido")) {
                 String autores_str = lista.getString("AUTORES");
@@ -158,7 +158,7 @@ public class ProducaoDAO extends Conexao implements DAO{
 
                 for (String s : autores_str.split("\n")) {
                     autores.add(s);
-                }
+                }   
 
                 ResumoExpandido prod = new ResumoExpandido(lista.getInt("ANO"),
                         lista.getString("EDITORA"),
@@ -187,7 +187,7 @@ public class ProducaoDAO extends Conexao implements DAO{
 
         while (lista.next()) {
             if (lista.getString("TIPO").equals("Evento")) {
-                Eventos prod = new Eventos(lista.getInt("ANO"), lista.getString("LOCAL"));
+                Eventos prod = new Eventos(lista.getInt("ANO"), lista.getString("LOCAL"), lista.getString("TIPODPROD"), lista.getString("NOME"));
                 encontrados.add(prod);
             } else if (lista.getString("TIPO").equals("Producao Tecnica")) {
                 String autores_str = lista.getString("AUTORES");
@@ -200,7 +200,7 @@ public class ProducaoDAO extends Conexao implements DAO{
                 ProducaoTecnica prod = new ProducaoTecnica(lista.getInt("ANO"),
                         lista.getString("TITULO"),
                         lista.getString("TIPODPROD"),
-                        autores);
+                        autores, lista.getString("TITULO"));
                 encontrados.add(prod);
             } else if (lista.getString("TIPO").equals("Resumo Expandido")) {
                 String autores_str = lista.getString("AUTORES");
@@ -237,7 +237,7 @@ public class ProducaoDAO extends Conexao implements DAO{
 
         while (lista.next()) {
             if (lista.getString("TIPO").equals("Evento")) {
-                Eventos prod = new Eventos(lista.getInt("ANO"), lista.getString("LOCAL"));
+                Eventos prod = new Eventos(lista.getInt("ANO"), lista.getString("LOCAL"), lista.getString("TIPODPROD"), lista.getString("NOME"));
                 encontrados.add(prod);
             } else if (lista.getString("TIPO").equals("Producao Tecnica")) {
                 String autores_str = lista.getString("AUTORES");
@@ -250,7 +250,7 @@ public class ProducaoDAO extends Conexao implements DAO{
                 ProducaoTecnica prod = new ProducaoTecnica(lista.getInt("ANO"),
                         lista.getString("TITULO"),
                         lista.getString("TIPODPROD"),
-                        autores);
+                        autores, lista.getString("TITULO"));
                 encontrados.add(prod);
             } else if (lista.getString("TIPO").equals("Resumo Expandido")) {
                 String autores_str = lista.getString("AUTORES");
@@ -287,7 +287,7 @@ public class ProducaoDAO extends Conexao implements DAO{
 
         while (lista.next()) {
             if (lista.getString("TIPO").equals("Evento")) {
-                Eventos prod = new Eventos(lista.getInt("ANO"), lista.getString("LOCAL"));
+                Eventos prod = new Eventos(lista.getInt("ANO"), lista.getString("LOCAL"), lista.getString("TIPODPROD"), lista.getString("NOME"));
                 encontrados.add(prod);
             } else if (lista.getString("TIPO").equals("Producao Tecnica")) {
                 String autores_str = lista.getString("AUTORES");
@@ -300,7 +300,7 @@ public class ProducaoDAO extends Conexao implements DAO{
                 ProducaoTecnica prod = new ProducaoTecnica(lista.getInt("ANO"),
                         lista.getString("TITULO"),
                         lista.getString("TIPODPROD"),
-                        autores);
+                        autores, lista.getString("TITULO"));
                 encontrados.add(prod);
             } else if (lista.getString("TIPO").equals("Resumo Expandido")) {
                 String autores_str = lista.getString("AUTORES");
@@ -337,7 +337,7 @@ public class ProducaoDAO extends Conexao implements DAO{
 
         while (lista.next()) {
             if (lista.getString("TIPO").equals("Evento")) {
-                Eventos prod = new Eventos(lista.getInt("ANO"), lista.getString("LOCAL"));
+                Eventos prod = new Eventos(lista.getInt("ANO"), lista.getString("LOCAL"), lista.getString("TIPODPROD"), lista.getString("NOME"));
                 encontrados.add(prod);
             } else if (lista.getString("TIPO").equals("Producao Tecnica")) {
                 String autores_str = lista.getString("AUTORES");
@@ -350,7 +350,7 @@ public class ProducaoDAO extends Conexao implements DAO{
                 ProducaoTecnica prod = new ProducaoTecnica(lista.getInt("ANO"),
                         lista.getString("TITULO"),
                         lista.getString("TIPODPROD"),
-                        autores);
+                        autores, lista.getString("TITULO"));
                 encontrados.add(prod);
             } else if (lista.getString("TIPO").equals("Resumo Expandido")) {
                 String autores_str = lista.getString("AUTORES");
@@ -387,7 +387,7 @@ public class ProducaoDAO extends Conexao implements DAO{
 
         while (lista.next()) {
             if (lista.getString("TIPO").equals("Evento")) {
-                Eventos prod = new Eventos(lista.getInt("ANO"), lista.getString("LOCAL"));
+                Eventos prod = new Eventos(lista.getInt("ANO"), lista.getString("LOCAL"), lista.getString("TIPODPROD"), lista.getString("NOME"));
                 encontrados.add(prod);
             } else if (lista.getString("TIPO").equals("Producao Tecnica")) {
                 String autores_str = lista.getString("AUTORES");
@@ -400,7 +400,7 @@ public class ProducaoDAO extends Conexao implements DAO{
                 ProducaoTecnica prod = new ProducaoTecnica(lista.getInt("ANO"),
                         lista.getString("TITULO"),
                         lista.getString("TIPODPROD"),
-                        autores);
+                        autores, lista.getString("TITULO"));
                 encontrados.add(prod);
             } else if (lista.getString("TIPO").equals("Resumo Expandido")) {
                 String autores_str = lista.getString("AUTORES");
@@ -437,7 +437,7 @@ public class ProducaoDAO extends Conexao implements DAO{
 
         while (lista.next()) {
             if (lista.getString("TIPO").equals("Evento")) {
-                Eventos prod = new Eventos(lista.getInt("ANO"), lista.getString("LOCAL"));
+                Eventos prod = new Eventos(lista.getInt("ANO"), lista.getString("LOCAL"), lista.getString("TIPODPROD"), lista.getString("NOME"));
                 encontrados.add(prod);
             } else if (lista.getString("TIPO").equals("Producao Tecnica")) {
                 String autores_str = lista.getString("AUTORES");
@@ -450,7 +450,7 @@ public class ProducaoDAO extends Conexao implements DAO{
                 ProducaoTecnica prod = new ProducaoTecnica(lista.getInt("ANO"),
                         lista.getString("TITULO"),
                         lista.getString("TIPODPROD"),
-                        autores);
+                        autores, lista.getString("TITULO"));
                 encontrados.add(prod);
             } else if (lista.getString("TIPO").equals("Resumo Expandido")) {
                 String autores_str = lista.getString("AUTORES");
@@ -487,7 +487,7 @@ public class ProducaoDAO extends Conexao implements DAO{
 
         while (lista.next()) {
             if (lista.getString("TIPO").equals("Evento")) {
-                Eventos prod = new Eventos(lista.getInt("ANO"), lista.getString("LOCAL"));
+                Eventos prod = new Eventos(lista.getInt("ANO"), lista.getString("LOCAL"), lista.getString("TIPODPROD"), lista.getString("NOME"));
                 encontrados.add(prod);
             } else if (lista.getString("TIPO").equals("Producao Tecnica")) {
                 String autores_str = lista.getString("AUTORES");
@@ -500,7 +500,8 @@ public class ProducaoDAO extends Conexao implements DAO{
                 ProducaoTecnica prod = new ProducaoTecnica(lista.getInt("ANO"),
                         lista.getString("TITULO"),
                         lista.getString("TIPODPROD"),
-                        autores);
+                        autores,
+                        lista.getString("LOCAL"));
                 encontrados.add(prod);
             } else if (lista.getString("TIPO").equals("Resumo Expandido")) {
                 String autores_str = lista.getString("AUTORES");
