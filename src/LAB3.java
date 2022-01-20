@@ -65,9 +65,11 @@ public class LAB3 {
          */
 
         LattesPag scrapper = new LattesPag();
+        String url = "./paginas/curriculo.html";
 
         try {
-            scrapper.ScrapPessoa("./paginas/Currículo do Sistema de Currículos Lattes (Luis Jorge Enrique Rivero Cabrejos).html");
+            Discente disc = scrapper.ScrapPessoa(url);
+            scrapper.ScrapProducoes(url, disc);
         } catch (IOException e) {
             e.printStackTrace();
         }
