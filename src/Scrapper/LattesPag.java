@@ -93,7 +93,7 @@ public class LattesPag {
 
                             // 0 é sempre o nível
                             if (curOcorrencia == 1) {
-                                nivel = n.toString();
+                                nivel = n.toString().replace("\n", "");
 
                                 // 2 é sempre local.
                             }else if (curOcorrencia == 2) {
@@ -367,12 +367,12 @@ public class LattesPag {
                         // Verifica se o nome está disponível
                         try {
                             ano = Integer.parseInt(temp[1].trim());
-                            tipo = temp[2].trim();
+                            tipo = temp[2].trim().replace("(", "").replace(")", "");
 
                         } catch (NumberFormatException n) {
                             nome = temp[1];
                             ano = Integer.parseInt(temp[2].trim());
-                            tipo = temp[3].trim();
+                            tipo = temp[3].trim().replace("(", "").replace(")", "");
                         }
                     }
                 }
@@ -382,6 +382,7 @@ public class LattesPag {
         return listEventos;
     }
 
+    // TODO: Terminar de separar as Produções Técnicas
     public ArrayList<ProducaoTecnica> SeparaProdTecnica(List<Element> titulo) {
         List<Element> eventos = null;
 
@@ -419,7 +420,8 @@ public class LattesPag {
 
 
 
-                System.out.println(temp[0]);
+
+                //System.out.println(temp[0]);
             }
         }
 
@@ -543,6 +545,7 @@ public class LattesPag {
 
 
         Discente disc = new Discente();
+        disc.setIdlattes(idlattes);
         disc.setNome(nome);
         disc.setCitacao(citacao);
         disc.setTitulacao(SeparaTitulacao(titulos));
@@ -553,20 +556,28 @@ public class LattesPag {
         return disc;
     }
 
-    public void ScrapProducoes(String path_do_html, Discente pessoa) throws IOException {
+    public ArrayList<Producao> ScrapProducoes(String path_do_html) throws IOException {
         File arquivo = new File(path_do_html);
         Document doc = Jsoup.parse(arquivo, "ISO-8859-1", "");
 
         List<Element> titulos = doc.getElementsByClass("title-wrapper");
 
+
+        ArrayList<Producao> resultado = new ArrayList<>();
+
         ArrayList<Eventos> eventos = SeparaEventos(titulos);
+
+        for (Eventos e: eventos) {
+            resultado.add(e);
+        }
 
         ArrayList<ProducaoTecnica> prodTec = SeparaProdTecnica(titulos);
 
-        for (Eventos e : eventos) {
-            System.out.println(e);
+        for (ProducaoTecnica p : prodTec) {
+            resultado.add(p);
         }
 
+        return resultado;
     }
 }
 

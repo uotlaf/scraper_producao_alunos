@@ -4,6 +4,8 @@ import BancoDDados.ProducaoDAO;
 import BancoDDados.Tabelas;
 import Entidades.Discente.*;
 import Entidades.Discente.Discente;
+import Entidades.Producao.Eventos;
+import Entidades.Producao.Producao;
 import Scrapper.LattesPag;
 
 import java.io.IOException;
@@ -13,19 +15,10 @@ import java.util.ArrayList;
 public class LAB3 {
     public static void main(String[] args) throws SQLException {
 
-        /*
-        // Informações que vão ser usadas
-        String path = "banco";
-        String nomedb = "banco.db";
 
-        // Checa se o banco de dados foi criado
-        Tabelas tabelas = new Tabelas(path, nomedb, false);
+/*
 
-        // Gestor da tabela dos discentes
-        DiscenteDAO tabDiscente = new DiscenteDAO(path, nomedb, false);
 
-        // Gestor da tabela das produções
-        ProducaoDAO tabProducao = new ProducaoDAO(path, nomedb, false);
 
         // Cria novo discente
         Discente disc = new Discente();
@@ -56,6 +49,9 @@ public class LAB3 {
         //    System.out.println(d.getNome());
         //}
 
+
+
+
         ArrayList<Discente> todosOsDisc = tabDiscente.listarTodos();
 
         for (Discente d : todosOsDisc ) {
@@ -64,12 +60,33 @@ public class LAB3 {
 
          */
 
+        // Informações que vão ser usadas
+        String path = "banco";
+        String nomedb = "banco.db";
+
+
+        // Gestor da tabela dos discentes
+        DiscenteDAO tabDiscente = new DiscenteDAO(path, nomedb, false);
+
+        // Gestor da tabela das produções
+        ProducaoDAO tabProducao = new ProducaoDAO(path, nomedb, false);
+
+        // Checa se o banco de dados foi criado
+        Tabelas tabelas = new Tabelas(path, nomedb, false);
+
+        // Scrap dessa página
         LattesPag scrapper = new LattesPag();
         String url = "./paginas/curriculo.html";
 
         try {
             Discente disc = scrapper.ScrapPessoa(url);
-            scrapper.ScrapProducoes(url, disc);
+            ArrayList<Producao> prod = scrapper.ScrapProducoes(url);
+
+            tabDiscente.salvar(disc);
+            for (Producao p : prod) {
+                tabProducao.salvar(p);
+            }
+
         } catch (IOException e) {
             e.printStackTrace();
         }

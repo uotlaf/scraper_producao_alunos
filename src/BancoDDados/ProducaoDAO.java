@@ -42,7 +42,7 @@ public class ProducaoDAO extends Conexao implements DAO{
 
         // Montando a string sql
         String comando =
-                "INSERT INTO PRODUCAO(" +
+                "INSERT INTO PRODUCOES (" +
                         "TIPO, TITULO, ANO, LOCAL, AUTORES, EDITORA, OUTROS, TIPODPROD) VALUES " +
                         "(?,?,?,?,?,?,?,?);";
 
@@ -53,14 +53,22 @@ public class ProducaoDAO extends Conexao implements DAO{
         if (entidade instanceof Eventos) {
             Eventos evento = (Eventos) entidade;
             pstm.setString(1, "Evento");
+            pstm.setString(2, "");
             pstm.setInt(3, evento.getAno());
             pstm.setString(4, evento.getLocal());
+            pstm.setString(5, "");
+            pstm.setString(6, "");
+            pstm.setString(7, "");
+            pstm.setString(8, "");
 
         } else if (entidade instanceof ProducaoTecnica) {
             ProducaoTecnica prod = (ProducaoTecnica) entidade;
             pstm.setString(1, "Producao Tecnica");
             pstm.setString(2, prod.getTitulo());
             pstm.setInt(3, prod.getAno());
+            pstm.setString(4, "");
+            pstm.setString(6, "");
+            pstm.setString(7, "");
             pstm.setString(8, prod.getTipo());
 
             String autores = "";
@@ -74,14 +82,18 @@ public class ProducaoDAO extends Conexao implements DAO{
             pstm.setString(1, "Resumo Expandido");
             pstm.setString(2, resumo.getTitulo());
             pstm.setInt(3, resumo.getAno());
+            pstm.setString(4, "");
             pstm.setString(6, resumo.getEditora());
             pstm.setString(7, resumo.getOutrasInfos());
+            pstm.setString(8, "");
 
             String autores = "";
             for (String i : resumo.getAutores()) {
                 autores += i + "\n"; // Adiciona o final e pula para outra entidade
             }
             pstm.setString(5, autores);
+        } else {
+            System.out.println("Que diabos é isso");
         }
 
         pstm.execute();

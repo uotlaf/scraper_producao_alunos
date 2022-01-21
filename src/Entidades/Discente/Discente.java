@@ -1,10 +1,13 @@
 package Entidades.Discente;
 
 
+import java.math.BigInteger;
 import java.util.ArrayList;
+import java.util.BitSet;
+import java.util.UUID;
 
 public class Discente {
-    private int                     idlattes;
+    private Long                    idlattes;
     private String                  nome;                               // Nome completo
     private String                  citacao;                            // Nome em citações Bibliográficas
     private ArrayList<Titulacao>    titulacao    = new ArrayList<>();   // Formação Acadêmica / Titulação
@@ -13,11 +16,11 @@ public class Discente {
     private ArrayList<AreaDAtuacao> AreaDAtuacao = new ArrayList<>();
     private ArrayList<Idioma>       idiomas      = new ArrayList<>();
 
-    public int getIdlattes() {
+    public Long getIdlattes() {
         return idlattes;
     }
 
-    public void setIdlattes(int idlattes) {
+    public void setIdlattes(Long idlattes) {
         this.idlattes = idlattes;
     }
 

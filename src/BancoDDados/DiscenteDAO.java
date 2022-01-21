@@ -3,6 +3,7 @@ package BancoDDados;
 import Entidades.Discente.*;
 import Entidades.Discente.Discente;
 
+import java.math.BigInteger;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -33,8 +34,8 @@ public class DiscenteDAO extends Conexao implements DAO{
 
         // Montando a string sql
         String comando =
-                "INSERT INTO DISCENTES(" +
-                        "IDLATTES, NOME, CITACAO, TITULACAO, ATUACAO_PROF, FORMACAO_COMP, AREA_D_ATUACAO, IDIOMAS) VALUES " +
+                "INSERT INTO DISCENTES (" +
+                        "IDLATTES, NOME, CITACAO, ATUACAO_PROF, TITULACAO, FORMACAO_COMP, AREA_D_ATUACAO, IDIOMAS) VALUES " +
                         "(?,?,?,?,?,?,?,?);";
 
         conectar();
@@ -100,7 +101,7 @@ public class DiscenteDAO extends Conexao implements DAO{
 
         // Bota tudo certinho na string acima
         PreparedStatement pstm = conexao.prepareStatement(comando);
-        pstm.setInt(1, discente.getIdlattes());
+        pstm.setLong(1, discente.getIdlattes());
         pstm.setString(2, discente.getNome());
         pstm.setString(3, discente.getCitacao());
         pstm.setString(4, titulacao);
@@ -127,7 +128,7 @@ public class DiscenteDAO extends Conexao implements DAO{
 
         conectar();
         PreparedStatement pstm = conexao.prepareStatement(comando);
-        pstm.setInt(1, discente.getIdlattes());
+        pstm.setLong(1, discente.getIdlattes());
         pstm.execute();
         conexao.commit();
         desconectar();
@@ -151,7 +152,7 @@ public class DiscenteDAO extends Conexao implements DAO{
         Discente discente = new Discente();
 
         if (lista.next()) {
-            discente.setIdlattes(lista.getInt   ("IDLATTES"));
+            discente.setIdlattes(lista.getLong("IDLATTES"));;
             discente.setNome    (lista.getString("NOME"));
             discente.setCitacao (lista.getString("CITACAO"));
 
@@ -215,7 +216,7 @@ public class DiscenteDAO extends Conexao implements DAO{
 
             Discente discente = new Discente();
 
-            discente.setIdlattes(lista.getInt("IDLATTES"));
+           discente.setIdlattes(lista.getLong("IDLATTES"));
             discente.setNome(lista.getString("NOME"));
             discente.setCitacao(lista.getString("CITACAO"));
 
@@ -277,7 +278,7 @@ public class DiscenteDAO extends Conexao implements DAO{
 
             Discente discente = new Discente();
 
-            discente.setIdlattes(lista.getInt("IDLATTES"));
+           discente.setIdlattes(lista.getLong("IDLATTES"));
             discente.setNome(lista.getString("NOME"));
             discente.setCitacao(lista.getString("CITACAO"));
 
@@ -339,7 +340,7 @@ public class DiscenteDAO extends Conexao implements DAO{
 
             Discente discente = new Discente();
 
-            discente.setIdlattes(lista.getInt("IDLATTES"));
+           discente.setIdlattes(lista.getLong("IDLATTES"));
             discente.setNome(lista.getString("NOME"));
             discente.setCitacao(lista.getString("CITACAO"));
 
@@ -402,7 +403,7 @@ public class DiscenteDAO extends Conexao implements DAO{
 
             Discente discente = new Discente();
 
-            discente.setIdlattes(lista.getInt("IDLATTES"));
+           discente.setIdlattes(lista.getLong("IDLATTES"));
             discente.setNome(lista.getString("NOME"));
             discente.setCitacao(lista.getString("CITACAO"));
 
@@ -465,7 +466,7 @@ public class DiscenteDAO extends Conexao implements DAO{
 
             Discente discente = new Discente();
 
-            discente.setIdlattes(lista.getInt("IDLATTES"));
+           discente.setIdlattes(lista.getLong("IDLATTES"));
             discente.setNome(lista.getString("NOME"));
             discente.setCitacao(lista.getString("CITACAO"));
 
@@ -528,7 +529,7 @@ public class DiscenteDAO extends Conexao implements DAO{
 
             Discente discente = new Discente();
 
-            discente.setIdlattes(lista.getInt("IDLATTES"));
+           discente.setIdlattes(lista.getLong("IDLATTES"));
             discente.setNome(lista.getString("NOME"));
             discente.setCitacao(lista.getString("CITACAO"));
 
@@ -591,7 +592,7 @@ public class DiscenteDAO extends Conexao implements DAO{
 
             Discente discente = new Discente();
 
-            discente.setIdlattes(lista.getInt("IDLATTES"));
+           discente.setIdlattes(lista.getLong("IDLATTES"));
             discente.setNome(lista.getString("NOME"));
             discente.setCitacao(lista.getString("CITACAO"));
 
@@ -658,7 +659,7 @@ public class DiscenteDAO extends Conexao implements DAO{
 
             Discente discente = new Discente();
 
-            discente.setIdlattes(lista.getInt("IDLATTES"));
+           discente.setIdlattes(lista.getLong("IDLATTES"));
             discente.setNome(lista.getString("NOME"));
             discente.setCitacao(lista.getString("CITACAO"));
 
