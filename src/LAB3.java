@@ -1,11 +1,9 @@
-
 import BancoDDados.DiscenteDAO;
 import BancoDDados.ProducaoDAO;
 import BancoDDados.Tabelas;
-import Entidades.Discente.*;
 import Entidades.Discente.Discente;
-import Entidades.Producao.Eventos;
 import Entidades.Producao.Producao;
+import Scrapper.Capcha.Capcha;
 import Scrapper.LattesPag;
 
 import java.io.IOException;
@@ -14,6 +12,44 @@ import java.util.ArrayList;
 
 public class LAB3 {
     public static void main(String[] args) throws SQLException {
+
+        // Informações que vão ser usadas
+        String path = "banco";
+        String nomedb = "banco.db";
+
+        // Gestor da tabela dos discentes
+        DiscenteDAO tabDiscente = new DiscenteDAO(path, nomedb, false);
+
+        // Gestor da tabela das produções
+        ProducaoDAO tabProducao = new ProducaoDAO(path, nomedb, false);
+
+        // Checa se o banco de dados foi criado
+        Tabelas tabelas = new Tabelas(path, nomedb, false);
+
+        // Sistema de capcha
+        Capcha capcha = new Capcha();
+
+        // Sistema de scrap
+        LattesPag scrapper = new LattesPag();
+
+
+        // Pega o source da página
+        String pagina = capcha.getLattesCurriculo("url_do_curriculo");
+
+        // Scrap dessa página
+        String url = "./paginas/curriculo.html";
+
+        try {
+            Discente disc = scrapper.ScrapPessoa(pagina);
+            ArrayList<Producao> prod = scrapper.ScrapProducoes(pagina);
+
+            System.out.println(disc.getNome());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
 
 
 /*
@@ -58,7 +94,7 @@ public class LAB3 {
             System.out.println(d.getNome());
         }
 
-         */
+
 
         // Informações que vão ser usadas
         String path = "banco";
@@ -76,7 +112,7 @@ public class LAB3 {
 
         // Scrap dessa página
         LattesPag scrapper = new LattesPag();
-        String url = "./paginas/curriculo.html";
+            String url = "./paginas/curriculo.html";
 
         try {
             Discente disc = scrapper.ScrapPessoa(url);
@@ -90,6 +126,10 @@ public class LAB3 {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+
+
     }
+    */
 
 }
