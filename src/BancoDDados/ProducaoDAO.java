@@ -1,7 +1,5 @@
 package BancoDDados;
 
-import Entidades.Discente.*;
-import Entidades.Discente.Discente;
 import Entidades.Producao.Eventos;
 import Entidades.Producao.Producao;
 import Entidades.Producao.ProducaoTecnica;

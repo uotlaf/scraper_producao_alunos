@@ -2,7 +2,6 @@ package BancoDDados;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
 
 public interface DAO {
     public void salvar(Object entidade) throws SQLException;

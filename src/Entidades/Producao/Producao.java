@@ -1,6 +1,5 @@
 package Entidades.Producao;
 
-import java.util.ArrayList;
 
 public class Producao {
     protected int ano;

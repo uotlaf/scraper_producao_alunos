@@ -9,11 +9,8 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.nodes.Node;
 
-import java.io.File;
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class LattesPag {
@@ -490,9 +487,10 @@ public class LattesPag {
         return listaIdiomas;
     }
 
-    public Discente ScrapPessoa(String path_do_html) throws IOException {
-        File arquivo = new File(path_do_html);
-        Document doc = Jsoup.parse(arquivo, "ISO-8859-1", "");
+    public Discente ScrapPessoa(String html) throws IOException {
+        // File arquivo = new File(path_do_html);
+        //Document doc = Jsoup.parse(html, "ISO-8859-1", "");
+        Document doc = Jsoup.parse(html, "");
 
         // Pega o nome da pessoa
         String nome = doc.getElementsByClass("nome").first().text();
@@ -556,9 +554,10 @@ public class LattesPag {
         return disc;
     }
 
-    public ArrayList<Producao> ScrapProducoes(String path_do_html) throws IOException {
-        File arquivo = new File(path_do_html);
-        Document doc = Jsoup.parse(arquivo, "ISO-8859-1", "");
+    public ArrayList<Producao> ScrapProducoes(String html) throws IOException {
+        //File arquivo = new File(path_do_html);
+        //Document doc = Jsoup.parse(html, "ISO-8859-1", "");
+        Document doc = Jsoup.parse(html, "");
 
         List<Element> titulos = doc.getElementsByClass("title-wrapper");
 

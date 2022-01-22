@@ -1,10 +1,8 @@
 package Entidades.Discente;
 
 
-import java.math.BigInteger;
 import java.util.ArrayList;
-import java.util.BitSet;
-import java.util.UUID;
+
 
 public class Discente {
     private Long                    idlattes;

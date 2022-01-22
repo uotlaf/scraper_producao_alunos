@@ -3,7 +3,6 @@ package BancoDDados;
 import Entidades.Discente.*;
 import Entidades.Discente.Discente;
 
-import java.math.BigInteger;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
