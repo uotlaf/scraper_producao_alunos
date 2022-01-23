@@ -34,10 +34,7 @@ public class LAB3 {
 
 
         // Pega o source da página
-        String pagina = capcha.getLattesCurriculo("url_do_curriculo");
-
-        // Scrap dessa página
-        String url = "./paginas/curriculo.html";
+        String pagina = capcha.getLattesCurriculo("http://lattes.cnpq.br/8534667641706692");
 
         try {
             Discente disc = scrapper.ScrapPessoa(pagina);
