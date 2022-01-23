@@ -1,8 +1,8 @@
 # Scraper de produção de Alunos
 Os discentes devem continuamente alimentar seu currículo Lattes com suas produções. Sua missão: extrair informações automaticamente do lattes, via scraper ou do arquivo xml quando o mesmo é exportado, capturar especificamente as informações desejadas e acumulá-las num pequeno módulo de dados.
 ## Trabalho apresentado como terceira nota para a matéria de Linguagem de Programação II
-- [ ] Ler as informações de produções de alunos (podem ser ex-alunos)
-- [ ] Extrair artigos científicos (artigos em revistas, artigos em eventos, capítulos de livro e resumos)
+- [X] Ler as informações de produções de alunos (podem ser ex-alunos)
+- [X] Extrair artigos científicos (artigos em revistas, artigos em eventos, capítulos de livro e resumos)
 - [ ] Apresentar um relatório sobre a produção e permitir realizar consulta na mesma
 
 ### Relatórios:
@@ -15,8 +15,7 @@ Os discentes devem continuamente alimentar seu currículo Lattes com suas produ�
 
 - [ ] Interface gráfica
 - [X] Banco de dados
-- [ ] Scrap local
-- [ ] Scrap direto da web
+- [X] Scrap direto da web
 
 ### Dependências:
 [Jsoup Java HTML Parser](https://mvnrepository.com/artifact/org.jsoup/jsoup), 
